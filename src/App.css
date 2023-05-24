@@ -1,0 +1,8 @@
+@font-face{
+    font-family: 'vazir';
+    src: url(./fonts//fonts/ttf/Vazirmatn-Medium.ttf) format("truetype");
+}
+
+body{
+    font-family: "vazir",sans-serif;
+}
