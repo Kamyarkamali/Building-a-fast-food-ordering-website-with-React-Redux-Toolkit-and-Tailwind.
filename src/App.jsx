@@ -9,6 +9,8 @@ import Title from './Components/Title/Title';
 //image
 import Home from "./images/icons/Home.png"
 import Favarite from './Components/Favarite/Favarite';
+import Footer from './Components/Footer/Footer';
+import Foods from './Components/Foods/Foods';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
       <Hero/>
       <Title/>
       <Favarite/>
+      <Foods/>
+      {/* <Footer/> */}
     </>
   )
 }
