@@ -1,10 +1,15 @@
 import { useEffect } from 'react'
 import './App.css';
 
+//REAT-ROUTER-DOM
+import { Routes,Route } from "react-router-dom";
+
 //component
 import Header from './Components/Header/Header'
 import Hero from './Components/Hero/Hero';
 import Title from './Components/Title/Title';
+import Homepage from './Components/Home/Homepage';
+import Detailse from './Components/Detailse/Detailse';
 
 //image
 import Home from "./images/icons/Home.png"
@@ -23,11 +28,15 @@ function App() {
   return (
     <>
       <Header/>
-      <Hero/>
-      <Title/>
-      <Favarite/>
-      <Foods/>
+    <Routes>
+      <Route path='/' element={<Homepage/>}/>
+      <Route path='/detailse/:id' element={<Detailse/>}/>
+      {/* <Hero/> */}
+      {/* <Title/> */}
+      {/* <Favarite/> */}
+      {/* <Foods/> */}
       {/* <Footer/> */}
+    </Routes>
     </>
   )
 }

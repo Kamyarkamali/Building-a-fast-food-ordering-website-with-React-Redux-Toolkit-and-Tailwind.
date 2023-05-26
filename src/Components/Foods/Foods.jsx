@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-
+import { Link } from 'react-router-dom';
 //Redux
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../features/Foods/foodSlice';
@@ -12,7 +12,6 @@ function Foods() {
     const state=useSelector(state=>state.foods.products);
 
     const selectedCategory =useSelector((state)=>state.foods.selectedCategory)
-    console.log(selectedCategory)
 
     const handleCategoryClick=(category)=>{
         dispatch(setCategory(category))
@@ -45,6 +44,7 @@ function Foods() {
         </div>
         {!show&&<div className='flex flex-wrap gap-10 items-center justify-center'>
             {state.map((item)=>(
+                <Link to={`/detailse/${item.id}`}>
                 <div key={item.id} className=' bg-gray-800 p-[20px] rounded-lg hover:scale-105 duration-200'> 
                     <img className='w-[300px] h-[200px] object-cover rounded-lg' src={item.url} alt="/" />
                     <div className='flex items-center justify-between'>
@@ -56,6 +56,7 @@ function Foods() {
                     <button className='bg-red-400 p-[5px] rounded-xl text-white font-bold'>درباره محصول</button>
                     </div>
                 </div>
+            </Link>
             ))}
         </div>}
     </div>
