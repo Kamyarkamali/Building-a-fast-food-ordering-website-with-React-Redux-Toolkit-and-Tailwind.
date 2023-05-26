@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategory } from '../../features/Foods/foodSlice';
 
+
 function Foods() {
     const dispatch=useDispatch()
 
@@ -54,6 +55,7 @@ function Foods() {
                     <div className='flex items-center justify-center gap-7'>
                     <button className='bg-green-500 p-[5px] rounded-xl text-white font-bold'>ثبت سفارش</button>
                     <button className='bg-red-400 p-[5px] rounded-xl text-white font-bold'>درباره محصول</button>
+                    
                     </div>
                 </div>
             </Link>

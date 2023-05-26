@@ -7,7 +7,8 @@ const initialState={
     isLoading:false,
     products:products,
     selectedCategory:[],
-    error:""
+    cart:[],
+    error:"",
 }
 
 const productsSlice=createSlice({
@@ -19,11 +20,23 @@ const productsSlice=createSlice({
         },
         setCategory:(state,action)=>{
             state.selectedCategory=action.payload
+        },
+        addToCart:(state,action)=>{
+            state.cart.push(action.payload)
+        },
+        removeFromCart:(state,action)=>{
+            const index=state.cart.findIndex((item)=>item.id==action.payload)
+            if (index !== -1) {
+                state.cart.splice(index, 1);
         }
-    }
+        },
+        clrareCart:(state)=>{
+            state.cart=[]
+        }
+    },
 })
 
 
-export const {product,setCategory}=productsSlice.actions;
+export const {product,setCategory,addToCart,removeFromCart,clrareCart}=productsSlice.actions;
 
 export default productsSlice.reducer;

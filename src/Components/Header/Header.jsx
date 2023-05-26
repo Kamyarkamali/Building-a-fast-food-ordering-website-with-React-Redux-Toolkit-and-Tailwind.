@@ -6,10 +6,17 @@ import hamburgerMenuIcons from "../../images/icons/hamburgermenu.jpg";
 import close from "../../images/icons/close.png";
 import Home from "../../images/icons/Home.png";
 
+///Redux
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 function Header() {
   const [isMobile,setIsmobile]=useState(false);
 
   const [open,setOpen]=useState(false);
+
+  const cartItems=useSelector((state)=>state.foods.cart)
+
 
   useEffect(()=>{
     const handelers=()=>{
@@ -30,7 +37,7 @@ function Header() {
  
 
   return (
-    <div className='max-w-[1440px] mx-auto h-[100px] shadow-md md:max-w-[1430px] md:text-sm'>
+    <div className='max-w-[1440px] mx-auto h-[100px] shadow-md md:max-w-[1430px] md:text-sm sticky top-0 z-[2000] bg-white'>
       <div className='flex justify-between'>
         {isMobile ?  (
           <div className='flex items-center py-4 gap-[26px]' onClick={()=>setOpen(!open)}>
@@ -56,8 +63,10 @@ function Header() {
         ) : (
           <div className='flex items-center px-4 py-4 gap-[26px]'>
             <button className='bg-red-500 text-white text-[20px] font-bold p-[5px] w-[160px] h-[40px] rounded-lg'>ورود / ثبت نام</button>
+            <Link to={"/"}>
             <img className='w-[40px] h-[40px] relative' src={Shopping} alt='shop'/>
-            <span className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>0</span>
+            </Link>
+            <span className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{cartItems.length}</span>
           </div>
         )}
         <div>

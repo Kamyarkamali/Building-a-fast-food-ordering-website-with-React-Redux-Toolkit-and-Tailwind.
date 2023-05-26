@@ -12,17 +12,17 @@ import hamburger6 from "../images/food/11.jpg";
 
 
 const products=[
-    {id:1,grouping:"pizza",url:pizza1,price:"$$$",name:"پیتزا پپرونی"},
-    {id:2,grouping:"pizza",url:pizza2,price:"$$$",name:"پیتزا مخلوط"},
-    {id:3,grouping:"pizza",url:pizza3,price:"$$$",name:"پیتزا گوشت و قارچ"},
-    {id:4,grouping:"pizza",url:pizza,price:"$$$",name:"پیتزا مخصوص"},
-    {id:5,grouping:"pizza",url:minipizza,price:"$$$",name:"پیتزا کوچک مخصوص کودکان"},
-    {id:6,grouping:"hamburger",url:hamburger,price:"$$",name:"همبرگرذغالی"},
-    {id:7,grouping:"hamburger",url:hamburger2,price:"$$$",name:"دوبل برگر"},
-    {id:8,grouping:"hamburger",url:hamburger3,price:"$$",name:"همبرگر با قارچ و پنیر"},
-    {id:9,grouping:"hamburger",url:hamburger4,price:"$$",name:"چیز برگر"},
-    {id:10,grouping:"hamburger",url:hamburger5,price:"$$$",name:"همبرگر مخصوص"},
-    {id:11,grouping:"hamburger",url:hamburger6,price:"$$",name:"پیشنهاد سر آشپز"},
+    {id:1,grouping:"pizza",url:pizza1,price:"1700000",name:"پیتزا پپرونی",detailse:"تهیه شده با مواد درجه یک",detailse2:"این غذا توسط شما 400 بار پسنیده شده است"},
+    {id:2,grouping:"pizza",url:pizza2,price:"2000000",name:"پیتزا مخلوط",detailse:"تهیه شده با مواد درجه یک",detailse2:"یکی از پیتزاهای محبوب برای شما که تعداد 450 بار پسندیده شده است"},
+    {id:3,grouping:"pizza",url:pizza3,price:"250000",name:"پیتزا گوشت و قارچ"},
+    {id:4,grouping:"pizza",url:pizza,price:"350000",name:"پیتزا مخصوص"},
+    {id:5,grouping:"pizza",url:minipizza,price:"950000",name:"پیتزا کوچک مخصوص کودکان"},
+    {id:6,grouping:"hamburger",url:hamburger,price:"250000",name:"همبرگرذغالی"},
+    {id:7,grouping:"hamburger",url:hamburger2,price:"280000",name:"دوبل برگر"},
+    {id:8,grouping:"hamburger",url:hamburger3,price:"340000",name:"همبرگر با قارچ و پنیر"},
+    {id:9,grouping:"hamburger",url:hamburger4,price:"300000",name:"چیز برگر"},
+    {id:10,grouping:"hamburger",url:hamburger5,price:"150000",name:"همبرگر مخصوص"},
+    {id:11,grouping:"hamburger",url:hamburger6,price:"542000",name:"پیشنهاد سر آشپز"},
 ]
 
 export default products;
