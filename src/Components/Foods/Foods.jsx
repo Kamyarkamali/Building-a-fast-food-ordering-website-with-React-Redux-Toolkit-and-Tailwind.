@@ -45,7 +45,7 @@ function Foods() {
         </div>
         {!show&&<div className='flex flex-wrap gap-10 items-center justify-center'>
             {state.map((item)=>(
-                <Link to={`/detailse/${item.id}`}>
+                <Link key={item.id} to={`/detailse/${item.id}`}>
                 <div key={item.id} className=' bg-gray-800 p-[20px] rounded-lg hover:scale-105 duration-200'> 
                     <img className='w-[300px] h-[200px] object-cover rounded-lg' src={item.url} alt="/" />
                     <div className='flex items-center justify-between'>

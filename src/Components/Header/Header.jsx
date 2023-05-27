@@ -46,7 +46,9 @@ function Header() {
               <img className='w-[20px] h-[20px] absolute right-3 cursor-pointer top-0 mt-3' src={close} alt='/' onClick={()=>setOpen(!open)}/>
               <img className='w-[30px] h-[30px] absolute left-3 top-0 mt-3' src={Home} alt="/" />
               <ul className='flex relative flex-col items-center py-10'>
+                <Link to={"/"}>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>صفحه اصلی</li>
+                </Link>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>ثبت سفارش</li>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>غذاهای ما</li>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>سر زدن به آشپزخانه</li>
@@ -63,9 +65,7 @@ function Header() {
         ) : (
           <div className='flex items-center px-4 py-4 gap-[26px]'>
             <button className='bg-red-500 text-white text-[20px] font-bold p-[5px] w-[160px] h-[40px] rounded-lg'>ورود / ثبت نام</button>
-            <Link to={"/"}>
             <img className='w-[40px] h-[40px] relative' src={Shopping} alt='shop'/>
-            </Link>
             <span className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{cartItems.length}</span>
           </div>
         )}
@@ -85,7 +85,9 @@ function Header() {
               <li className='px-[10px] cursor-pointer text-gray-500'>ثبت سفارش</li>
               {/* <li className='px-[10px] cursor-pointer text-gray-500'>دیدن منو</li> */}
               <li className='px-[10px] cursor-pointer text-gray-500'>غذاهای ما</li>
+              <Link to={"/"}>
               <li className='px-[10px] cursor-pointer text-gray-500'>صفحه اصلی</li>
+              </Link>
             </ul>
             </div>
               <img className='w-[40px]' src={Home} alt="/" />
