@@ -68,11 +68,10 @@ function Header() {
             <Link to={"/shopping"}>
             <img className='w-[40px] h-[40px] relative' src={Shopping} alt='shop'/>
             </Link>
-            {cartItems.map((item)=>(
-              <span key={item.id} className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{item.quantity}</span>
-            ))}
+              <span className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{cartItems.length}</span>
           </div>
         )}
+
         <div>
           {isMobile ? 
           <div className='flex items-center py-3 px-[15px] gap-6'> 
@@ -80,7 +79,9 @@ function Header() {
             <img className='w-[32px]' src={Shopping} alt='/'/>
             </Link>
             <img className='w-[32px] relative' src={Home} alt='/'/>
-            <span className='absolute top-[-1px] right-[100px] bg-red-600 text-white p-[3px] rounded-lg'>{cartItems.quantity}</span>
+            {cartItems.map((item)=>(
+              <span key={item.id} className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{item.quantity}</span>
+            ))}
           </div>
           :<div className='flex items-center py-[20px] mr-4'>
             <div>

@@ -10,6 +10,7 @@ const initialState={
     cart:[],
     error:"",
     totalPrice: 0,
+    checkout:false
 }
 
 
@@ -25,6 +26,7 @@ const productsSlice=createSlice({
         },
         addToCart: (state, action) => {
           const itemIncart=state.cart.find((item)=>item.id===action.payload.id)
+          state.checkout=false
 
           if(itemIncart){
             itemIncart.quantity++;
@@ -59,10 +61,13 @@ const productsSlice=createSlice({
         resetCart:(state)=>{
           state.cart=[]
         },
+        setCheckout: (state, action) => {
+          state.checkout = action.payload;
+        },
     }
 })
 
 
-export const {product,setCategory,addToCart,removeItem,incrementQuantity,decrement,resetCart}=productsSlice.actions;
+export const {product,setCategory,addToCart,removeItem,incrementQuantity,decrement,resetCart,setCheckout}=productsSlice.actions;
 
 export default productsSlice.reducer;

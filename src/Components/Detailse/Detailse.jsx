@@ -3,9 +3,7 @@ import { Link, useParams } from "react-router-dom";
 //Redux
 import { useSelector,useDispatch } from 'react-redux';
 import { addToCart,removeItem,incrementQuantity,decrement,resetCart} from '../../features/Foods/foodSlice';
-
-//Helpers
-import { isInCart } from '../helpers/helpers';
+import { useState } from 'react';
 
 ///Image
 const images="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThbUURM1gsrHhepriY4oEeBuOcSY9RRbxtcg&usqp=CAU";
@@ -27,6 +25,7 @@ function Detailse() {
     const state=useSelector((state)=>state.foods.products)
     const product=state.find((item)=>item.id===Number(id))
     const cartItems=useSelector((state)=>state.foods.cart)
+    const [orderQouantity,setOrderQuantity]=useState(1)
 
     
     const getTotalQuantity = () => {
@@ -42,7 +41,22 @@ function Detailse() {
     const random=filtered.sort(()=>0.5 - Math.random())
 
     const sliceRandom=random.slice(0,2)
-    console.log(cartItems)
+
+    const handelAdd=()=>{
+      dispatch(addToCart({...product,quantity:orderQouantity}))
+    }
+
+    const handelDecrement=()=>{
+      dispatch(decrement(product.id));
+      if(orderQouantity>1){
+        setOrderQuantity(orderQouantity -1)
+      }
+    }
+
+    const handelIncrement=()=>{
+      dispatch(incrementQuantity(product.id))
+      setOrderQuantity(orderQouantity+1)
+    }
 
     if (!product) {
         return <div>محصول مورد نظر یافت نشد.</div>;
@@ -67,7 +81,8 @@ function Detailse() {
       </div>
     </div>
     <div className='border w-[70%] sm:w-[40%] md:sm:w-[40%] lg:sm:w-[40%] rounded-md mt-5'>
-          <div className='flex justify-between py-4 px-3 items-center'>
+
+        <div className='flex justify-between py-4 px-3 items-center'>
             <span className='relative'>ریال</span>
               <span className='absolute left-[7.7rem] sm:left-[27.5rem] md:left-[53.6rem]'>{toPersianNumber(product.price.toLocaleString())}</span>
               <span>{product.name}</span>
@@ -83,32 +98,13 @@ function Detailse() {
             </div>
           </div>
           <div className='flex justify-center gap-4 py-8 items-center'>
-          {/* <button className='bg-green-600 text-white w-[24px] text-xl rounded-lg' onClick={() => dispatch(addToCart(product))}>ADD</button>
-          <button className='bg-green-600 text-white w-[24px] text-xl rounded-lg' onClick={() => dispatch(incrementQuantity(product.id))}>+</button>
-            <span className='font-bold text-gray-600'>{getTotalQuantity() ||0}</span>
-            <button className='bg-red-600 text-white w-[24px] text-xl rounded-lg' onClick={()=>dispatch(decrement(product.id))}>-</button> */}
-            {/* {
-              !cartItems.length===0 ? [] : <button onClick={()=>dispatch(addToCart(product))}>ثبت سفارش من</button>
-            } */}
-            
-            {
-              cartItems.length===0 ? (
-                <button onClick={()=>dispatch(addToCart(product))}>ثبت سفارش</button>
-              ) : (
-                <div> 
-                <button onClick={()=>dispatch(incrementQuantity(product.id))}>+</button>
-                <button onClick={()=>dispatch(decrement(product.id))}>-</button>
-                {
-                  cartItems.length>=1 && (
-                    <button onClick={()=>{
-                      dispatch(removeItem(product.id))
-                      dispatch(resetCart())
-                    }}>حذف کلی</button>
-                  )
-                }
-                </div>
-              )
-            }
+            <div className='duration-300'>
+                      <button onClick={handelAdd} className='bg-red-500 p-[6px] text-white rounded-lg'>ثبت سفارش</button>
+                      <div className='flex justify-center gap-4 py-4'>
+                        <button onClick={handelIncrement} className='bg-green-500 p-[5px] text-white rounded-xl'>+</button>
+                        <button onClick={handelDecrement} className='bg-red-500 p-[5px] text-white rounded-xl'>-</button>
+                      </div>
+            </div>
             
           </div>
           <div className='flex flex-col items-center py-3'>
