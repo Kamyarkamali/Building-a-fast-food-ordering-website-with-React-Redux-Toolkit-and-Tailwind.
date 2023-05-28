@@ -50,21 +50,29 @@ function Header() {
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>صفحه اصلی</li>
                 </Link>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>ثبت سفارش</li>
+              <Link to={"/foods"}>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>غذاهای ما</li>
-              <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>سر زدن به آشپزخانه</li>
-              <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>ارسالی های مشتریان</li>
+              </Link>
+              <Link to={"/foods"}>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>دیدن منو</li>
+              </Link>
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>درباره ما</li>
               </ul>
             <div className='absolute bottom-[210px] flex items-center gap-[10px] font-bold'>
+              <Link to={"/sungup"}>
             <button className='bg-white p-[10px] rounded-lg w-[90px] text-gray-700'>ورود</button>
+              </Link>
+              <Link to={"/sungup"}>
             <button className='bg-white p-[10px] rounded-lg w-[90px] text-gray-700'>ثبت نام</button>
+              </Link>
             </div>
             </div>
           </div>
         ) : (
           <div className='flex items-center px-4 py-4 gap-[26px]'>
+            <Link to={"/sungup"}>
             <button className='bg-red-500 text-white text-[20px] font-bold p-[5px] w-[160px] h-[40px] rounded-lg'>ورود / ثبت نام</button>
+            </Link>
             <Link to={"/shopping"}>
             <img className='w-[40px] h-[40px] relative' src={Shopping} alt='shop'/>
             </Link>
@@ -80,18 +88,18 @@ function Header() {
             </Link>
             <img className='w-[32px] relative' src={Home} alt='/'/>
             {cartItems.map((item)=>(
-              <span key={item.id} className='absolute left-[220px] top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{item.quantity}</span>
+              <span key={item.id} className='absolute left-[270px] sm:left-[590px]  top-1 bg-red-500 text-white p-[2px] rounded-lg font-bold md:left-[240px]'>{item.quantity}</span>
             ))}
           </div>
           :<div className='flex items-center py-[20px] mr-4'>
             <div>
             <ul className='flex items-center px-[10px] text-1xl'>
               <li className='px-[10px] cursor-pointer text-gray-500'>درباره ما</li>
-              {/* <li className='px-[10px] cursor-pointer text-gray-500'>ارسالی های مشتریان</li> */}
-              {/* <li className='px-[10px] cursor-pointer text-gray-500'>سر زدن به آشپزخانه</li> */}
+              
               <li className='px-[10px] cursor-pointer text-gray-500'>ثبت سفارش</li>
-              {/* <li className='px-[10px] cursor-pointer text-gray-500'>دیدن منو</li> */}
+              <Link to={"/foods"}>
               <li className='px-[10px] cursor-pointer text-gray-500'>غذاهای ما</li>
+              </Link>
               <Link to={"/"}>
               <li className='px-[10px] cursor-pointer text-gray-500'>صفحه اصلی</li>
               </Link>

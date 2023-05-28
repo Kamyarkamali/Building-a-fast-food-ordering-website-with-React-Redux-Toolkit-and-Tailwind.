@@ -6,15 +6,13 @@ import { Routes,Route } from "react-router-dom";
 
 //component
 import Header from './Components/Header/Header'
-import Hero from './Components/Hero/Hero';
-import Title from './Components/Title/Title';
 import Homepage from './Components/Home/Homepage';
 import Detailse from './Components/Detailse/Detailse';
+import Footer from './Components/Footer/Footer';
+import SingUp from './Components/SingUp/SingUp';
 
 //image
 import Home from "./images/icons/Home.png"
-import Favarite from './Components/Favarite/Favarite';
-import Footer from './Components/Footer/Footer';
 import Foods from './Components/Foods/Foods';
 import Shopp from './Components/Shopp/Shopp';
 
@@ -34,12 +32,14 @@ function App() {
       <Route path='/detailse/:id' element={<Detailse/>}/>
       <Route path='/foods' element={<Foods/>}/>
       <Route path='/shopping' element={<Shopp/>}/>
+      <Route path='/sungup' element={<SingUp/>}/>
       {/* <Hero/> */}
       {/* <Title/> */}
       {/* <Favarite/> */}
       {/* <Foods/> */}
       {/* <Footer/> */}
     </Routes>
+    <Footer/>
     </>
   )
 }
