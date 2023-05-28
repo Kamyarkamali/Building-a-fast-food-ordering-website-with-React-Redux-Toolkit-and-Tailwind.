@@ -9,7 +9,9 @@ const initialState={
     selectedCategory:[],
     cart:[],
     error:"",
+    totalPrice: 0,
 }
+
 
 const productsSlice=createSlice({
     name:"foods",
@@ -21,22 +23,46 @@ const productsSlice=createSlice({
         setCategory:(state,action)=>{
             state.selectedCategory=action.payload
         },
-        addToCart:(state,action)=>{
-            state.cart.push(action.payload)
+        addToCart: (state, action) => {
+          const itemIncart=state.cart.find((item)=>item.id===action.payload.id)
+
+          if(itemIncart){
+            itemIncart.quantity++;
+          } else{
+          const newItem= state.cart.push({...action.payload,quantity:1})
+          state.cart.push(newItem)
+          }
         },
-        removeFromCart:(state,action)=>{
-            const index=state.cart.findIndex((item)=>item.id==action.payload)
-            if (index !== -1) {
-                state.cart.splice(index, 1);
-        }
+
+        incrementQuantity:(state,action)=>{
+          const item=state.cart.find((item)=>item.id===action.payload)
+          if(item&&item.quantity){
+            item.quantity++
+          }
         },
-        clrareCart:(state)=>{
-            state.cart=[]
-        }
-    },
+        decrement:(state,action)=>{
+          state.cart=state.cart.map((item)=>{
+            if(item.id===action.payload){
+              if(item.quantity<=1){
+                item.quantity=1
+              } else{
+                item.quantity--
+              }
+            }
+            return item
+          })
+        },
+        removeItem:(state,action)=>{
+          const removeItem=state.cart.filter((item)=>item.id!==action.payload)
+          state.cart=removeItem
+        },
+        resetCart:(state)=>{
+          state.cart=[]
+        },
+    }
 })
 
 
-export const {product,setCategory,addToCart,removeFromCart,clrareCart}=productsSlice.actions;
+export const {product,setCategory,addToCart,removeItem,incrementQuantity,decrement,resetCart}=productsSlice.actions;
 
 export default productsSlice.reducer;

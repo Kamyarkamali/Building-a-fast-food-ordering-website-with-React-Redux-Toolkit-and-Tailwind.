@@ -1,7 +1,7 @@
-const isInsCart=(state,id)=>{
-    const result=!!state.cart.find((item)=>item.id===id)
-    return result;
+const isInCart=(state)=>{
+    if(!state.length===0){
+        return state
+    }
 }
 
-
-export {isInsCart};
+export {isInCart};

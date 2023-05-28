@@ -16,6 +16,7 @@ import Home from "./images/icons/Home.png"
 import Favarite from './Components/Favarite/Favarite';
 import Footer from './Components/Footer/Footer';
 import Foods from './Components/Foods/Foods';
+import Shopp from './Components/Shopp/Shopp';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
       <Route path='/' element={<Homepage/>}/>
       <Route path='/detailse/:id' element={<Detailse/>}/>
       <Route path='/foods' element={<Foods/>}/>
+      <Route path='/shopping' element={<Shopp/>}/>
       {/* <Hero/> */}
       {/* <Title/> */}
       {/* <Favarite/> */}
