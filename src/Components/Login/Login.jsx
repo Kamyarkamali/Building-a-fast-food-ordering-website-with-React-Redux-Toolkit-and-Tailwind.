@@ -1,25 +1,28 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-//Tostify
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import notify from '../Toast/toast';
+import { notify } from '../Toast/toast';
+import { ToastContainer } from 'react-toastify';
+
+
+import 'react-toastify/dist/ReactToastify.css';
 //Validate
 import validate from "../SingUp/validation";
 
 function Login() {
   const [data,setData]=useState({
-    name:"",
     email:"",
     password:"",
   })
   const [errors,setErrors]=useState({});
   const [touch,setToche]=useState({});
+  const navigate=useNavigate()
 
 
   useEffect(()=>{
-    setErrors(validate(data))
+    setErrors(validate(data,"login"))
   },[data,touch])
 
   const changeHandeler=(e)=>{
@@ -39,11 +42,13 @@ const foucHandeler=(e)=>{
 const submitHandeler=(e)=>{
   e.preventDefault()
   if(!Object.keys(errors).length){
-    notify("دوباره امتحان کنید","error") 
+    notify("خوش آمدید","success")
+    navigate("/")
+
   } else{
-    notify("ثبت نام موفقت آمیز بود","success")
+    notify("دوباره امتحان کنید","error") 
     setToche({
-      name:true,
+      name:"",
       email:true,
       password:true,
     })
@@ -73,8 +78,8 @@ const submitHandeler=(e)=>{
 
 
       <div className='flex flex-col py-2 items-center'>
-      <Link className='text-blue-600 text-sm py-2' to={"/sungup"}>ورود به حساب کاربری</Link>
-      <button className='py-2 bg-blue-600 text-white rounded-lg w-[200px]' type='submit'>ثبت نام</button>
+      <Link className='text-blue-600 text-sm py-2' to={"/sungup"}>اکانت کاربری ندارم</Link>
+      <button className='py-2 bg-blue-600 text-white rounded-lg w-[200px]' type='submit'>ورود</button>
       </div>
       </form>
       <ToastContainer/>

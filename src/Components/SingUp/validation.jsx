@@ -1,11 +1,6 @@
-const validate=(data)=>{
+const validate=(data,type)=>{
     const errors={};
-///Name
-    if(!data.name.trim()){
-        errors.name="وارد کردن اسم اجباری است"
-    } else{
-        delete errors.name
-    }
+
 
     ///Email
     if(!data.email){
@@ -26,6 +21,17 @@ const validate=(data)=>{
     }
 
 
+    
+
+
+    if(type==="singup"){
+        ///Name
+    if(!data.name.trim()){
+        errors.name="وارد کردن اسم اجباری است"
+    } else{
+        delete errors.name
+    }
+
     ///confirmPassword
 
     if(!data.confirmPassword){
@@ -36,12 +42,16 @@ const validate=(data)=>{
         delete errors.confirmPassword
     }
 
-    //isAcepted
     if(data.isAcepted){
         delete errors.isAcepted
     } else{
         errors.isAcepted="شما قوانین زود فود را قبول نکرده اید"
     }
+
+    }
+
+
+
     return errors
 }
 

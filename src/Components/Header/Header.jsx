@@ -59,7 +59,7 @@ function Header() {
               <li className='py-[10px] cursor-pointer font-bold text-gray-500 hover:scale-105 duration-300'>درباره ما</li>
               </ul>
             <div className='absolute bottom-[210px] flex items-center gap-[10px] font-bold'>
-              <Link to={"/sungup"}>
+              <Link to={"/login"}>
             <button className='bg-white p-[10px] rounded-lg w-[90px] text-gray-700'>ورود</button>
               </Link>
               <Link to={"/sungup"}>

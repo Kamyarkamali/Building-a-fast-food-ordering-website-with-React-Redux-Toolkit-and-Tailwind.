@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 //Tostify
-import { ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { notify } from '../Toast/toast';
+import { ToastContainer } from 'react-toastify';
+
 //Validate
 import validate from './validation'
 
@@ -17,15 +19,16 @@ function SingUp() {
   })
   const [errors,setErrors]=useState({});
   const [touch,setToche]=useState({});
+  const navigate=useNavigate()
 
 
   useEffect(()=>{
-    setErrors(validate(data))
+    setErrors(validate(data,"singup"))
   },[data,touch])
 
   const changeHandeler=(e)=>{
     if(e.target.name==="isAcepted"){
-      setData({...data,[e.target.name]:e.target.cheked})
+      setData({...data,[e.target.name]:e.target.checked})
     }else{
       setData({...data,[e.target.name]:e.target.value})
     }
@@ -42,9 +45,10 @@ const foucHandeler=(e)=>{
 const submitHandeler=(e)=>{
   e.preventDefault()
   if(!Object.keys(errors).length){
-    notify("eee","error")
+    notify("ثبت نام انجام شد","success")
+    navigate("/")
   } else{
-    notify("dddd","success")
+    notify("پر کردن تمام مشخصات الزامی است","error")
     setToche({
       name:true,
       email:true,
@@ -54,6 +58,7 @@ const submitHandeler=(e)=>{
     })
   }
 }
+
 
 
   return (
@@ -88,11 +93,12 @@ const submitHandeler=(e)=>{
 
       <div className='flex justify-center gap-3 items-center'>
       <label className='text-gray-500'>قوانین زود فود را قبول میکنم</label>
-      <input type="checkbox" value={data.isAcepted} onFocus={foucHandeler}/>
+      <input type="checkbox" value={data.isAcepted} name='isAcepted' onFocus={foucHandeler} onChange={changeHandeler }/>
+      {errors.isAcepted && touch.isAcepted&& <span className='text-red-500 text-center text-sm py-122'>{errors.isAcepted}</span>}
       </div>
 
       <div className='flex flex-col py-2 items-center'>
-      <Link className='text-blue-600 text-sm py-2' to={"/login"}> اکانت کاربری ندارم </Link>
+      <Link className='text-blue-600 text-sm py-2' to={"/login"}> اکانت کاربری دارم </Link>
       <button className='py-2 bg-blue-600 text-white rounded-lg w-[200px]' type='submit'>ورود</button>
       </div>
       </form>

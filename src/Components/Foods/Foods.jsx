@@ -18,6 +18,17 @@ function Foods() {
         dispatch(setCategory(category))
     }
 
+
+    //Persian Number
+    const toPersianNumber = (number) => {
+        const persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+        return number.toString().replace(/\d/g, (digit) => persianDigits[digit]);
+      };
+
+      const number = 1234567;
+    const formattedNumber = toPersianNumber(number);
+      
+
     const filteredProducts = selectedCategory
     ? state.filter(product => product.grouping === selectedCategory)
     : state;
@@ -49,7 +60,7 @@ function Foods() {
                 <div key={item.id} className=' bg-gray-800 p-[20px] rounded-lg hover:scale-105 duration-200'> 
                     <img className='w-[300px] h-[200px] object-cover rounded-lg' src={item.url} alt="/" />
                     <div className='flex items-center justify-between'>
-                    <p className='bg-blue-700 inline-block text-white font-bold p-[3px] rounded-xl text-center'>{item.price}</p>
+                    <p className='bg-blue-700 inline-block text-white font-bold p-[3px] rounded-xl text-center'>{toPersianNumber(item.price)}</p>
                     <p className='text-white  py-4'>{item.name}</p>
                     </div>
                     <div className='flex items-center justify-center gap-7'>

@@ -2,8 +2,8 @@ import React from 'react';
 
 //Redux
 import { useSelector,useDispatch } from 'react-redux';
-import {removeItem,setCheckout} from '../../features/Foods/foodSlice';
-import { useParams } from 'react-router-dom';
+import {setCheckout} from '../../features/Foods/foodSlice';
+import { Link } from 'react-router-dom';
 
 
 function Shopp() {
@@ -19,7 +19,7 @@ function Shopp() {
   return (
     <div className='max-w-[700px] shadow-lg border m-auto mt-11 rounded-lg max-h-[300px]'>
       {checkout ? (
-        <p className='text-center'>پرداخت موفقیت آمیز بود</p>
+        <p className='text-center text-green-500 font-bold'>پرداخت موفقیت آمیز بود</p>
       ):(
         <div>
             {state.map((item)=>(
@@ -34,7 +34,7 @@ function Shopp() {
 
     }
         <div className='flex justify-center py-4'>
-          <button onClick={handelcke} className='bg-blue-600 p-[4px] mt-[3] text-white rounded-lg'>پرداخت</button>
+          {!checkout ?<button onClick={handelcke} className='bg-blue-600 p-[4px] mt-[3] text-white rounded-lg'>پرداخت</button> : <Link className='bg-yellow-400 p-[4px] text-white rounded-xl' to={"/"}>رفتن به صفحه اصلی</Link>}
         </div>
     </div>
   )
