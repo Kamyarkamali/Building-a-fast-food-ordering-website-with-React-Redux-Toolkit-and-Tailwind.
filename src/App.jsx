@@ -15,7 +15,7 @@ import SingUp from './Components/SingUp/SingUp';
 import Home from "./images/icons/Home.png"
 import Foods from './Components/Foods/Foods';
 import Shopp from './Components/Shopp/Shopp';
-
+import Login from './Components/Login/Login';
 function App() {
 
   useEffect(()=>{
@@ -33,6 +33,7 @@ function App() {
       <Route path='/foods' element={<Foods/>}/>
       <Route path='/shopping' element={<Shopp/>}/>
       <Route path='/sungup' element={<SingUp/>}/>
+      <Route path='/login' element={<Login/>}/>
       {/* <Hero/> */}
       {/* <Title/> */}
       {/* <Favarite/> */}

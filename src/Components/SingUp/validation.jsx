@@ -10,7 +10,9 @@ const validate=(data)=>{
     ///Email
     if(!data.email){
         errors.email="لطفا ایمیل را وارد کنید"
-    }else {
+    }else if(! /\S+@\S+\.\S+/.test(data.email)){
+        errors.email="ایمیل معتبر وارد کنید"
+    } else{
         delete errors.email
     }
 
@@ -42,3 +44,5 @@ const validate=(data)=>{
     }
     return errors
 }
+
+export default validate;

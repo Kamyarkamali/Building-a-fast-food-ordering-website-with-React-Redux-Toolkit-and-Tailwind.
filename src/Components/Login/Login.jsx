@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-//Tostify
-import { ToastContainer,toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { notify } from '../Toast/toast';
-//Validate
-import validate from './validation'
 
-function SingUp() {
+//Tostify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import notify from '../Toast/toast';
+//Validate
+import validate from "../SingUp/validation";
+
+function Login() {
   const [data,setData]=useState({
     name:"",
     email:"",
     password:"",
-    confirmPassword:"",
-    isAcepted:false
   })
   const [errors,setErrors]=useState({});
   const [touch,setToche]=useState({});
@@ -32,8 +31,6 @@ function SingUp() {
   }
 
 
-
-
 //FoucsHandeler
 const foucHandeler=(e)=>{
   setToche({...touch,[e.target.name]:true})
@@ -42,15 +39,13 @@ const foucHandeler=(e)=>{
 const submitHandeler=(e)=>{
   e.preventDefault()
   if(!Object.keys(errors).length){
-    notify("eee","error")
+    notify("دوباره امتحان کنید","error") 
   } else{
-    notify("dddd","success")
+    notify("ثبت نام موفقت آمیز بود","success")
     setToche({
       name:true,
       email:true,
       password:true,
-      confirmPassword:true,
-      isAcepted:true
     })
   }
 }
@@ -59,13 +54,9 @@ const submitHandeler=(e)=>{
   return (
     <div className='max-w-[500px] m-auto border-[3px] rounded-lg h-[600px] mt-8 shadow-lg flex justify-center'>
       <form onSubmit={submitHandeler}>
-      <h1 className='text-center py-3 text-2xl text-blue-700 font-bold'>ثبت نام</h1>
+      <h1 className='text-center py-3 text-2xl text-blue-700 font-bold'>ورود</h1>
 
-      <div className='flex flex-col items-center text-right py-4'>
-        <label className='text-gray-400'>نام و نام خانوادگی</label>
-        <input className='border-[2px]  outline-none w-[300px] h-[33px] rounded-md placeholder:text-right ' type="text" name='name' value={data.name}  onChange={changeHandeler} onFocus={foucHandeler}/>
-        {errors.name &&touch.name&& <span className='text-red-500 text-center text-sm py-122'>{errors.name}</span>}
-      </div>
+      
 
       <div className='flex flex-col text-right items-center py-4'>
         <label className='text-gray-400'>ایمیل</label>
@@ -80,20 +71,10 @@ const submitHandeler=(e)=>{
         {errors.password && touch.password&& <span className='text-red-500 text-center text-sm py-122'>{errors.password}</span>}
       </div>
 
-      <div className='flex flex-col text-right py-4 items-center'>
-        <label className='text-gray-400'>تکرار رمز ورود</label>
-        <input className='border-[2px] outline-none w-[300px] h-[33px] rounded-md placeholder:text-right' type="password" name='confirmPassword' value={data.confirmPassword}  onChange={changeHandeler} onFocus={foucHandeler}/>
-        {errors.confirmPassword && touch.confirmPassword&& <span className='text-red-500 text-center text-sm py-122'>{errors.confirmPassword}</span>}
-      </div>
-
-      <div className='flex justify-center gap-3 items-center'>
-      <label className='text-gray-500'>قوانین زود فود را قبول میکنم</label>
-      <input type="checkbox" value={data.isAcepted} onFocus={foucHandeler}/>
-      </div>
 
       <div className='flex flex-col py-2 items-center'>
-      <Link className='text-blue-600 text-sm py-2' to={"/login"}> اکانت کاربری ندارم </Link>
-      <button className='py-2 bg-blue-600 text-white rounded-lg w-[200px]' type='submit'>ورود</button>
+      <Link className='text-blue-600 text-sm py-2' to={"/sungup"}>ورود به حساب کاربری</Link>
+      <button className='py-2 bg-blue-600 text-white rounded-lg w-[200px]' type='submit'>ثبت نام</button>
       </div>
       </form>
       <ToastContainer/>
@@ -101,4 +82,4 @@ const submitHandeler=(e)=>{
   )
 }
 
-export default SingUp
+export default Login;
